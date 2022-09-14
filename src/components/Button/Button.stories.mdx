@@ -1,0 +1,65 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs';
+import { Button } from './Button';
+
+export const Template = ({...args}) => <Button {...args}>ボタン</Button>;
+
+<Meta
+  title="UI/Button"
+  argTypes={{
+    size: {
+      description: 'ボタンのサイズを変える',
+      control: 'radio',
+      options: ['small', 'large'],
+      type: { required: false },
+    },
+    variant: {
+      description: 'ボタンの見た目を変える',
+      control: 'select',
+      options: ['outlined', 'attention'],
+      type: { required: false },
+    },
+    loading: {
+      defaultValue: false,
+      description: '読み込み中の状態にする',
+      control: 'boolean',
+      type: { required: false },
+    },
+    fullWidth: {
+      defaultValue: false,
+      description: 'ボタンを親要素いっぱいに広げる',
+      control: 'boolean',
+      type: { required: false },
+    }
+  }}
+  component={Template} />
+
+# Button
+
+<Description of={Button} />
+
+<Canvas withSource="open">
+  <Story
+    name="Default"
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
+
+
+## Stories
+
+### FullWidth
+
+<Canvas withSource="open">
+  <Story
+    name="FullWidth"
+    args={{
+      fullWidth: true,
+    }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+// 以降のストーリーは省略
